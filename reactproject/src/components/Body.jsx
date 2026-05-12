@@ -1,6 +1,5 @@
 import React from 'react'
 import "./Body.css"
-import diceicon from '../assets/Group 196.png'
 import heart from '../assets/Heart.svg'
 import trolly from '../assets/ShoppingCartSimple.svg'
 import silversteelwatch from '../assets/silversteelwatch.png'

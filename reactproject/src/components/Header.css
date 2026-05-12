@@ -20,42 +20,35 @@
 }
 i{
     position: relative;
-    bottom: 40px;
+    
     height: 20px;
     width: 20px;
 }
-#logotext{
-    color: black;
-    font-weight: 600;
-    font-size: 3em;
+#mainlogo{
+    height: 300px;
+    width: 300px;
     position: relative;
-    bottom: 60px;
-    font-family: Arial, Helvetica, sans-serif;
-
-    color: black;
-    text-shadow: 3px 3px 6px rgba(19, 20, 20, 0.5); /* Using aqua to match your shipping bar */
-    transform: translateY(-2px); /* Slightly lifts the text up */
-    transition: all 0.3s ease;
-}
+    bottom: 140px; 
+} 
 
 #menubar{ 
     display: flex;
     justify-content: center;
     gap: 90px;  
     position: relative;
-    bottom: 20px;
+    bottom: 130px;
 }
 #searchbar{
     height: 35px;
     width: 950px;
     position: relative;
     left: 200px;
-    bottom: 50px;
+    bottom: 200px;
     border: 2px solid black;
 }
 .menu{
     position: relative;
-    bottom: 20px;
+    bottom: 50px;
     text-decoration: none;
     color: black;
     font-family: Impact, sans-serif;
@@ -76,4 +69,3 @@ i:hover {
     transition: all 0.3s ease;
 }
 
-  

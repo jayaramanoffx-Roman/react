@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./Header.css"
 import silversteelwatch from '../assets/silversteelwatch.png'
 import jblboom from '../assets/jblboom.jpg'
-import mainlogo from '../assets/shopztext.png'
+import shopzlogo from '../assets/logoshopz.png'
 import nothingearbuds from '../assets/nothingearbuds.jpg'
 import { Navigate, useNavigate } from 'react-router-dom'
 
@@ -24,7 +24,7 @@ const Header = ({framework,Name}) => {
      <div id='logos'>
       <i  onClick={()=> setShowsearch(!Showsearch)}  class="bi bi-search"></i>
       <i class="bi bi-bag-heart-fill"></i>
-      <h1 id='logotext'>SHOPZ</h1>
+      <img id='mainlogo' src={shopzlogo} alt="ShopZ Logo" />
       <i class="bi bi-cart-check-fill"></i>
       <i onClick={handlenavigation}  class="bi bi-person-circle"></i>
      </div>
