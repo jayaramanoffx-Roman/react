@@ -1,0 +1,49 @@
+import React, { useState } from 'react'
+import "./Header.css"
+import silversteelwatch from '../assets/silversteelwatch.png'
+import jblboom from '../assets/jblboom.jpg'
+import mainlogo from '../assets/shopztext.png'
+import nothingearbuds from '../assets/nothingearbuds.jpg'
+import { Navigate, useNavigate } from 'react-router-dom'
+
+
+const Header = ({framework,Name}) => {
+   const[Showsearch,setShowsearch] = useState(false);
+    
+
+   const navigate = useNavigate()
+   const handlenavigation = () => {
+      navigate('/PROFILE')
+   }
+  return (
+  <header>
+    
+     <div id='freeshipping'>
+        Kick off the New Year with free shipping on orders over Rs. 999!
+     </div>
+     <div id='logos'>
+      <i  onClick={()=> setShowsearch(!Showsearch)}  class="bi bi-search"></i>
+      <i class="bi bi-bag-heart-fill"></i>
+      <h1 id='logotext'>SHOPZ</h1>
+      <i class="bi bi-cart-check-fill"></i>
+      <i onClick={handlenavigation}  class="bi bi-person-circle"></i>
+     </div>
+      {Showsearch && (
+     <div >
+      <input type="text" placeholder='   Search here......' id="searchbar" />
+     </div>
+      )}
+
+     <div id='menubar'>
+      <a href="" class = "menu">  SHOP  </a>
+      <a href="" class = "menu">  {Name}  </a> 
+      <a href="" class = "menu">  {framework} ARRIVALS  </a> 
+      <a href="" class = "menu">  ABOUT  </a>
+      <a href="" class = "menu">  CONTACT  </a>
+     </div>
+
+  </header>
+  )
+}
+
+export default Header

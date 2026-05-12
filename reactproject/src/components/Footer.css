@@ -1,0 +1,40 @@
+#footer{
+    position: relative;
+    top: 1750px;
+    background-color: black;
+    color: white;
+    height: 350px;
+    border-radius: 30px;
+}
+#foots{
+    padding-top: 30px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+}
+p{
+    position: relative;
+    bottom: 15px;
+}
+a{
+    text-decoration: none;
+    color: grey;
+    font-size: small; 
+}
+a:hover{
+    color: white;
+}
+#copyrights{
+    text-align: center;
+    position: relative;
+    top: 10px;
+    font-size: x-small;
+}
+.footimg{
+    position: relative;
+    top: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+

@@ -1,0 +1,133 @@
+#wholebody{
+    padding-right: 100px;
+    padding-left: 100px;
+    height: 600px;
+    position: relative;
+    bottom: 20px;
+} 
+#sap{
+    position: relative;
+    top: 20px;
+    text-align: center;
+    font-size: xx-large;
+    font-family: Impact, sans-serif;
+}
+
+#filterbox{
+    display: flex;
+    gap: 50px;
+    border: 1px solid black;
+    border-left-color: white;
+    border-right-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+}
+#a-z:hover{
+    background-color: black;
+    color: white;
+}
+#filtertext{
+    position: relative;
+    top: 4px;
+}
+#a-z{
+    position: relative;
+    font-size: small;  
+    border: 2px solid black;
+    padding: 5px;
+}
+
+
+.bundle{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 90px;
+}
+#watchesdiv,#powerbankdiv,#pendrivediv,#earbudsdiv,#boomdiv{
+   padding-top: 50px;
+}
+
+.productimg{
+    position: relative;
+    left: 4px;
+    height: 300px;
+    width: 300px;
+    border-radius: 20px;
+}
+.setofproducts{
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+.setofproducts:hover{
+            background-color: black;
+            color: white;
+            transform: scale(1.0);
+            transition: 1s;
+}
+.p-name{
+    position: relative;
+    top: 5px;
+    left: 5px;
+    font-size: small;
+}
+.price{
+    position: relative;
+    top: 20px;
+    left: 5px;
+    font-size: medium;
+}
+del{
+    font-size: small;
+}
+.notify{
+    border: 2px solid rgb(243, 238, 238);
+    width: 100px;
+    position: relative;
+    bottom: 335px;
+    left: 5px;
+    font-size: small;
+    text-align: center;
+    background-color:black;
+    color: white;
+    border-radius: 20px;
+}
+.heartimg{
+    position: relative;
+    background-color: white;
+    bottom: 350px;
+    left: 280px;
+    width: 15px;
+    height: 15px;
+    border-radius: 5px;
+}
+.trollyimg{
+    width: 10px;
+    height: 10px; 
+    position: relative;
+    right: 4px;
+}
+.trolly-button{
+    background-color: black;
+    border-color: white;
+    color: white;
+    position: relative;
+    bottom: 50px;
+    left: 190px;
+    border-radius: 5px;
+    font-size: xx-small;
+}
+.buynow-button{
+    background-color: black;
+    border-color: white;
+    color: white;
+    font-size: xx-small;
+    position: relative;
+    bottom: 20px;
+    left: 120px;
+    border-radius: 5px;
+}
+
+
+
