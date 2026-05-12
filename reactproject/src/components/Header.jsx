@@ -3,6 +3,7 @@ import "./Header.css"
 import silversteelwatch from '../assets/silversteelwatch.png'
 import jblboom from '../assets/jblboom.jpg'
 import shopzlogo from '../assets/logoshopz.png'
+import shopzmp4 from '../assets/SHOPZTEXTmp4.mp4'
 import nothingearbuds from '../assets/nothingearbuds.jpg'
 import { Navigate, useNavigate } from 'react-router-dom'
 
