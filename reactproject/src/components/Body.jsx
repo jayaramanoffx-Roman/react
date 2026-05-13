@@ -1,11 +1,9 @@
 import React from 'react'
 import "./Body.css"
-import heart from '../assets/Heart.svg'
 import trolly from '../assets/ShoppingCartSimple.svg'
 import silversteelwatch from '../assets/silversteelwatch.png'
 import blackleatherwatche from '../assets/blackleatherwatches.png'
 import blacksportswatch from '../assets/blacksportswatch.png'
-import blackheart from '../assets/heart-shape-silhouette.png'
 import portronicspb from '../assets/portronicspb.jpg'
 import samsungpb from '../assets/samsungpb.webp'
 import boatpb from '../assets/boatpb.webp'
@@ -23,21 +21,26 @@ import { useState } from 'react'
 
 
 const Body = ({children}) => {
-      const Heartchange = () =>{
-            var img = document.querySelector('.heartimg').src = blackheart    
-      }
-      
-      // const [New,setNew] = useState('poda dei')
-      
+ 
+          const [heartchange, setHeartchange] = useState({});
 
+          const toggleHeart = (id) => {
+                setHeartchange((prev) => ({
+                 ...prev,
+                  [id]: !prev[id]
+             }));
+            };
+
+
+
+          
   return (
     <div id='wholebody'>
              {/* <div id='sap'>
                   <h4>SHOP ALL PRODUCTS</h4>
              </div> */}
              
-      {/* {New} */}
-      {/* <button onClick={() => setNew('sorry')}>change panu</button> */}
+
           <div id='filterbox'>
                                  <span id='filtertext'>Filters </span> 
                   <div>
@@ -61,10 +64,10 @@ const Body = ({children}) => {
             {/* watches */}
             <div class="setofproducts">
                  <img src={silversteelwatch} alt="watch" class="productimg" /><br />
-                 <div class="p-name">SILVER STEEL WATCH</div>
+                 <div class="p-name" >SILVER STEEL WATCH</div>
                  <div class="price">₹599 <del>₹999</del></div>
                  <div class="notify">TRENDING</div>  
-                 <img onClick={Heartchange} class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('silver-steel-watch')} class={heartchange['silver-steel-watch'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>  
                  <button class="buynow-button">BUY NOW</button>
            </div>
@@ -73,7 +76,7 @@ const Body = ({children}) => {
                  <div class="p-name">BLACK LEATHER WATCH</div>
                  <div class="price">₹499 <del>₹999</del></div>
                  <div class="notify">BESTSELLER</div>    
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('black-leather-watch')} class={heartchange['black-leather-watch'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>  
                  <button class="buynow-button">BUY NOW</button>
            </div>
@@ -82,7 +85,7 @@ const Body = ({children}) => {
                  <div class="p-name">BLACK SPORTS WATCH</div>
                  <div class="price">₹299 <del>₹699</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('black sports watch')} class={heartchange['black sports watch'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>  
                  <button class="buynow-button">BUY NOW</button>      
            </div>
@@ -96,7 +99,7 @@ const Body = ({children}) => {
                  <div class="p-name">PORTRONICS POWERBANK</div>
                  <div class="price">₹999 <del>₹1699</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('portronics-powerbank')} class={heartchange['portronics-powerbank'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button> 
                  <button class="buynow-button">BUY NOW</button>       
            </div>
@@ -105,7 +108,7 @@ const Body = ({children}) => {
                  <div class="p-name">SAMSUNG POWERBANK</div>
                  <div class="price">₹1199 <del>₹1699</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('samsung-powerbank')} class={heartchange['samsung-powerbank'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>        
                  <button class="buynow-button">BUY NOW</button>
            </div>           
@@ -114,7 +117,7 @@ const Body = ({children}) => {
                  <div class="p-name">BOAT POWERBANK</div>
                  <div class="price">₹899 <del>₹1299</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('boat-powerbank')} class={heartchange['boat-powerbank'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>        
                  <button class="buynow-button">BUY NOW</button>
            </div>
@@ -128,7 +131,7 @@ const Body = ({children}) => {
                  <div class="p-name">SAMSUNG PENDRIVE</div>
                  <div class="price">₹299 <del>₹699</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('samsung-pendrive')} class={heartchange['samsung-pendrive'] ? 'bi-heart-fill' : 'bi-heart'}     ></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>        
                  <button class="buynow-button">BUY NOW</button>
            </div>
@@ -137,7 +140,7 @@ const Body = ({children}) => {
                  <div class="p-name">HP PENDRIVE</div>
                  <div class="price">₹599 <del>₹899</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('hp-pendrive')} class={heartchange['hp-pendrive'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>        
                  <button class="buynow-button">BUY NOW</button>
            </div>           
@@ -146,7 +149,7 @@ const Body = ({children}) => {
                  <div class="p-name">SONY PENDRIVE</div>
                  <div class="price">₹699 <del>₹1099</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('sony-pendrive')} class={heartchange['sony-pendrive'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>        
                  <button class="buynow-button">BUY NOW</button>
            </div>
@@ -160,16 +163,16 @@ const Body = ({children}) => {
                  <div class="p-name">REALME EARBUDS</div>
                  <div class="price">₹999 <del>₹1699</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('realme-earbuds')} class={heartchange['realme-earbuds'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>        
                  <button class="buynow-button">BUY NOW</button>
-           </div>
+            </div>
             <div class="setofproducts">
                  <img src={boatearbuds} alt="watch" class="productimg" /><br />
                  <div class="p-name">BOAT EARBUDS</div>
                  <div class="price">₹899 <del>₹1299</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('boat-earbuds')} class={heartchange['boat-earbuds'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>        
                  <button class="buynow-button">BUY NOW</button>
            </div>           
@@ -178,7 +181,7 @@ const Body = ({children}) => {
                  <div class="p-name">NOTHING EARBUDS</div>
                  <div class="price">₹1499 <del>₹2699</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('nothing-earbuds')} class={heartchange['nothing-earbuds'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>        
                  <button class="buynow-button">BUY NOW</button>
            </div>
@@ -192,7 +195,7 @@ const Body = ({children}) => {
                  <div class="p-name">SONY WH-CH720N/BCIN </div>
                  <div class="price">₹8299 <del>₹14,699</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('sony-boom')} class={heartchange['sony-boom'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>        
                  <button class="buynow-button">BUY NOW</button>
            </div >
@@ -201,7 +204,7 @@ const Body = ({children}) => {
                  <div class="p-name">JBL LIVE 770NC </div>
                  <div class="price">₹9,999 <del>₹13,999</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('jbl-boom')} class={heartchange['jbl-boom'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>        
                  <button class="buynow-button">BUY NOW</button>
            </div>           
@@ -210,7 +213,7 @@ const Body = ({children}) => {
                  <div class="p-name">BOAT ROCKERZ 450 PRO</div>
                  <div class="price">₹1,799 <del>₹4,999</del></div>
                  <div class="notify">TOPSELLER</div>
-                 <img class="heartimg" src={heart} alt="heart" />
+                 <i onClick={() => toggleHeart('boat-boom')} class={heartchange['boat-boom'] ? 'bi-heart-fill' : 'bi-heart'}></i>
                  <button class="trolly-button"><img class="trollyimg" src={trolly} alt="trolly" />ADD TO CART</button>        
                  <button class="buynow-button">BUY NOW</button>
            </div>

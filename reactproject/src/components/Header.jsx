@@ -6,6 +6,7 @@ import shopzlogo from '../assets/logoshopz.png'
 import shopzmp4 from '../assets/SHOPZTEXTmp4.mp4'
 import nothingearbuds from '../assets/nothingearbuds.jpg'
 import { Navigate, useNavigate } from 'react-router-dom'
+import Footer from './Footer'
 
 
 const Header = ({framework,Name}) => {
@@ -39,7 +40,7 @@ const Header = ({framework,Name}) => {
       <a href="" class = "menu">  SHOP  </a>
       <a href="" class = "menu">  {Name}  </a> 
       <a href="" class = "menu">  {framework} ARRIVALS  </a> 
-      <a href="" class = "menu">  ABOUT  </a>
+      <a href="#footer" class = "menu">  ABOUT  </a>
       <a href="" class = "menu">  CONTACT  </a>
      </div>
 
