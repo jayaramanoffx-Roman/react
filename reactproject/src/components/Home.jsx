@@ -8,8 +8,8 @@ import './Home.css'
 const Home = () => {
   return ( 
     <div>
-        <Header framework="NEW" Name="COLLECTION"></Header>
-        <Body>Watches</Body>
+        <Header ></Header>
+        <Body></Body>
         <Footer></Footer>
     </div>
   )

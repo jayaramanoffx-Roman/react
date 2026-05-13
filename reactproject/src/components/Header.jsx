@@ -9,7 +9,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import Footer from './Footer'
 
 
-const Header = ({framework,Name}) => {
+const Header = () => {
    const[Showsearch,setShowsearch] = useState(false);
     
 
@@ -24,11 +24,11 @@ const Header = ({framework,Name}) => {
         Kick off the New Year with free shipping on orders over Rs. 999!
      </div>
      <div id='logos'>
-      <i  onClick={()=> setShowsearch(!Showsearch)}  class="bi bi-search"></i>
-      <i class="bi bi-bag-heart-fill"></i>
+      <i  onClick={()=> setShowsearch(!Showsearch)}  className="bi bi-search"></i>
+      <i className="bi bi-bag-heart-fill"></i>
       <img id='mainlogo' src={shopzlogo} alt="ShopZ Logo" />
-      <i class="bi bi-cart-check-fill"></i>
-      <i onClick={handlenavigation}  class="bi bi-person-circle"></i>
+      <i className="bi bi-cart-check-fill"></i>
+      <i onClick={handlenavigation}  className="bi bi-person-circle"></i>
      </div>
       {Showsearch && (
      <div >
@@ -37,12 +37,16 @@ const Header = ({framework,Name}) => {
       )}
 
      <div id='menubar'>
-      <a href="" class = "menu">  SHOP  </a>
-      <a href="" class = "menu">  {Name}  </a> 
-      <a href="" class = "menu">  {framework} ARRIVALS  </a> 
-      <a href="#footer" class = "menu">  ABOUT  </a>
-      <a href="" class = "menu">  CONTACT  </a>
+      <a href="" className = "menu">  SHOP  </a>
+      <a href="" className = "menu">  COLLECTIONS  </a> 
+      <a href="" className = "menu">  NEW ARRIVALS  </a> 
+      <a href="#footer" className = "menu">  ABOUT  </a>
+      <a href="" className = "menu">  CONTACT  </a>
      </div>
+   <div className="auth-buttons">
+     <button className="login-btn">LOGIN</button>
+     <button className="register-btn">REGISTER</button>
+   </div>
 
   </header>
   )

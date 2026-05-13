@@ -26,11 +26,11 @@ const Login = () => {
       {/* <h1>LOGIN PAGE</h1> */}
         <form action=""  id='main'>
             <label htmlFor="">USERNAME : </label>
-            <input class='logininput' type="text" onChange={event => setUsername(event.target.value)} value={username} />
+            <input className='logininput' type="text" onChange={event => setUsername(event.target.value)} value={username} />
             <br />
             <br />
             <label htmlFor="">PASSWORD : </label>
-            <input class='logininput' type="password" onChange={event => setPassword(event.target.value)} value={password}/>
+            <input className='logininput' type="password" onChange={event => setPassword(event.target.value)} value={password}/>
             <br />
             <br />
             <br />

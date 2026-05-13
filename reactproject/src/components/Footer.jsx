@@ -1,16 +1,13 @@
 import React from 'react'
 import "./Footer.css"
-import visa from "../assets/Clip path group1.png"
-import ry from "../assets/Clip path group-1.png"
-import rupay from "../assets/Group 185.png"
-import paytm from "../assets/Clip path group-2.png"
+
 
 const Footer = () => {
   return (
     
 <div id='footer'>
    <center>
-    <div ID="foots" >
+    <div id="foots" >
       <div id='foot4'>
       <div >
       <p>ABOUT US</p>

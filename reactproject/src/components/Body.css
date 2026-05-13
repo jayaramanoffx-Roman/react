@@ -4,13 +4,6 @@
     position: relative;
     bottom: 140px;
 } 
-#sap{
-    position: relative;
-    top: 20px;
-    text-align: center;
-    font-size: xx-large;
-    font-family: Impact, sans-serif;
-}
 
 #filterbox{
     display: flex;
@@ -96,9 +89,8 @@ del{
     color: white;
     border-radius: 20px;
 }
-i{
+#allproducts i{
     color: black;
-    font-weight: 1400;
     position: relative;
     bottom: 360px;
     left: 280px;
@@ -107,6 +99,17 @@ i{
    0 5px 15px rgba(0,0,0,0.7),
    0 10px 30px rgba(0,0,0,0.6),
    0 15px 45px rgba(0,0,0,0.5);
+}
+#allproducts i:hover{
+    transform: scale(1.25);
+
+    text-shadow:
+    0 0 15px rgba(0,0,0,1),
+    0 0 30px rgba(0,0,0,0.95),
+    0 0 50px rgba(0,0,0,0.9),
+    0 0 70px rgba(0,0,0,0.85);
+
+    transition: 0.3s ease;
 }
 .trollyimg{
     width: 10px;

@@ -17,12 +17,12 @@ p{
     padding-bottom: 20px;
 
 }
-a{
+#footer a{
     text-decoration: none;
     color: grey;
     font-size: small; 
 }
-a:hover{
+#footer :hover{
     color: white;
 }
 
