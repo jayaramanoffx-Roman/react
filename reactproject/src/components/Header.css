@@ -1,60 +1,127 @@
+header{
+    position: relative;
+    background: white;
+    min-height: 300px;
+}
 
 #freeshipping{
     color: white;
     background-color: black;
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: xx-small ;
+    padding: 10px 0;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.auth-buttons{
+    position: absolute;
+    right: 50px;
+    top: 18px;
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.login-btn,
+.register-btn{
+    padding: 9px 20px;
+    border: 2px solid black;
+    background: white;
+    color: black;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.login-btn:hover,
+.register-btn:hover{
+    background: black;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
 }
 
 #logos{
-    position: relative;
-    top: 50px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-    display: flex;
-    justify-content:center;
-    gap: 100px;
-}
-#logos i{
-    position: relative;
-    bottom: 20px;
-    height: 20px;
-    width: 20px;
-    cursor: pointer;
-}
-#mainlogo{
-    height: 300px;
-    width: 300px;
-    position: relative;
-    bottom: 160px; 
-} 
-
-#menubar{ 
     display: flex;
     justify-content: center;
-    gap: 90px;  
-    position: relative;
-    bottom: 130px;
+    align-items: center;
+
+    gap: 85px;
+
+    padding-top: 35px;
 }
+
+#logos i{
+    font-size: 20px;
+
+    cursor: pointer;
+
+    color: black;
+
+    transition: 0.3s ease;
+}
+
+#logos i:hover{
+    transform: translateY(-4px) scale(1.12);
+    text-shadow: 0 10px 25px rgba(0,0,0,0.45);
+}
+
+#mainlogo{
+    width: 230px;
+    height: 230px;
+
+    object-fit: contain;
+
+    position: relative;
+    bottom: 18px;
+}
+
+#searchbox{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
 #searchbar{
-    height: 35px;
-    width: 950px;
-    position: relative;
-    left: 200px;
-    bottom: 210px;
+    width: 70%;
+    height: 42px;
     border: 2px solid black;
+    border-radius: 30px;
+    padding: 0 22px;
+    outline: none;
+    font-size: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
 }
+
+#menubar{
+    display: flex;
+    justify-content: center;
+
+    gap: 95px;
+
+    margin-top: -10px;
+
+    padding-bottom: 25px;
+}
+
 .menu{
     position: relative;
-    bottom: 50px;
+
     text-decoration: none;
     color: black;
+
     font-family: Impact, sans-serif;
-    font-size: x-large;
+
+    font-size: 22px;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
 }
+
 .menu::after{
     content: "";
     width: 0;
@@ -69,56 +136,38 @@
 .menu:hover::after{
     width: 100%;
 }
-/* Updated Hover Effect */
-.menu:hover {
-    color: black;
-    text-shadow: 3px 3px 6px rgba(19, 20, 20, 0.5); /* Using aqua to match your shipping bar */
-    transform: translateY(-2px); /* Slightly lifts the text up */
-    transition: all 0.3s ease;
-}
-i:hover {
-    color: black;
-    text-shadow: 3px 3px 6px rgba(19, 20, 20, 0.5); /* Using aqua to match your shipping bar */
-    transform: translateY(-2px); /* Slightly lifts the text up */
-    transition: all 0.3s ease;
-}
 
-.auth-buttons{
-    display: inline;
-    display: flex;
-    gap: 15px;
-    position: relative;
-    left: 1120px;
-    bottom: 20px;
-    width: 100px;
-}
-
-.login-btn,
-.register-btn{
-    padding: 10px 22px;
-
-    border: 2px solid black;
-    background-color: white;
-    color: black;
-
-    font-size: 11px;
-    letter-spacing: 2px;
-    font-weight: bold;
-
-    border-radius: 30px;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-
-.login-btn:hover,
-.register-btn:hover{
-    background-color: black;
-    color: white;
-
+.menu:hover{
     transform: translateY(-3px);
+    text-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
 
-    box-shadow:
-    0px 10px 25px rgba(0,0,0,0.35);
+@media(max-width: 768px){
+    .auth-buttons{
+        justify-content: center;
+        padding: 15px 0 0;
+    }
+
+    #logos{
+        gap: 30px;
+        height: 130px;
+    }
+
+    #mainlogo{
+        width: 160px;
+        height: 160px;
+    }
+
+    #menubar{
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+
+    .menu{
+        font-size: 20px;
+    }
+
+    #searchbar{
+        width: 90%;
+    }
 }
