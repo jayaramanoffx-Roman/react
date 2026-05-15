@@ -4,23 +4,19 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
-#loginbody{
+#registerbody{
     min-height: 100vh;
     background: linear-gradient(to bottom right, #f5f5f5, #dcdcdc);
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: 10px;
 }
 
-#main{
+#registermain{
     width: 390px;
-    padding: 25px;
-
+    padding: 20px;
     border-radius: 25px;
-
     background: black;
     color: white;
 
@@ -30,95 +26,72 @@ body{
     0px 5px 20px rgba(0,0,0,0.9);
 }
 
-#main h1{
+#registermain h1{
     text-align: center;
-    margin-bottom: 18px;
-
+    margin-bottom: 10px;
     letter-spacing: 4px;
     font-size: 26px;
-
     color: white;
 }
 
-#main label{
+#registermain label{
     font-size: 12px;
     letter-spacing: 1px;
     color: white;
 }
 
-.logininput{
+.registerinput{
     width: 100%;
-
-    padding: 10px;
-
+    padding: 8px;
     margin-top: 5px;
-    margin-bottom: 12px;
-
+    margin-bottom: 8px;
     border-radius: 12px;
-
     border: 1px solid rgba(255,255,255,0.25);
-
     background: transparent;
     color: white;
-
     outline: none;
 }
 
-.logininput:focus{
+.registerinput:focus{
     border-color: white;
     box-shadow: 0 0 15px rgba(255,255,255,0.25);
 }
 
-#loginsubmitbutton{
+#registersubmitbutton{
     width: 100%;
-
-    padding: 11px;
-
+    padding: 9px;
     margin-top: 5px;
-
     border-radius: 30px;
-
     border: 2px solid white;
-
     background: white;
     color: black;
-
     font-weight: bold;
     letter-spacing: 2px;
-
     cursor: pointer;
     transition: 0.3s ease;
 }
 
-#loginsubmitbutton:hover{
+#registersubmitbutton:hover{
     background: black;
     color: white;
-
     transform: translateY(-3px);
-
     box-shadow: 0 15px 35px rgba(255,255,255,0.18);
 }
 
-#registerlink{
+#loginlink{
     text-align: center;
-
-    margin-top: 12px;
-
+    margin-top: 8px;
     color: #cfcfcf;
-
     font-size: 13px;
 }
 
-#registerlink span{
+#loginlink span{
     color: white;
-
     font-weight: bold;
-
     cursor: pointer;
-
     margin-left: 5px;
 }
 
-#registerlink span:hover{
+#loginlink span:hover{
     text-decoration: underline;
 }

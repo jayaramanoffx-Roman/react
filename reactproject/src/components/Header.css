@@ -20,6 +20,7 @@
 }
 #logos i{
     position: relative;
+    bottom: 20px;
     height: 20px;
     width: 20px;
     cursor: pointer;
@@ -28,7 +29,7 @@
     height: 300px;
     width: 300px;
     position: relative;
-    bottom: 140px; 
+    bottom: 160px; 
 } 
 
 #menubar{ 
@@ -43,7 +44,7 @@
     width: 950px;
     position: relative;
     left: 200px;
-    bottom: 200px;
+    bottom: 210px;
     border: 2px solid black;
 }
 .menu{
@@ -54,7 +55,20 @@
     font-family: Impact, sans-serif;
     font-size: x-large;
 }
+.menu::after{
+    content: "";
+    width: 0;
+    height: 3px;
+    background: black;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.3s ease;
+}
 
+.menu:hover::after{
+    width: 100%;
+}
 /* Updated Hover Effect */
 .menu:hover {
     color: black;
@@ -70,11 +84,13 @@ i:hover {
 }
 
 .auth-buttons{
+    display: inline;
     display: flex;
     gap: 15px;
     position: relative;
-    bottom: 400px;
-    left: 1100px;
+    left: 1120px;
+    bottom: 20px;
+    width: 100px;
 }
 
 .login-btn,

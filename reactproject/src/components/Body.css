@@ -1,8 +1,8 @@
-#wholebody{
+/* #wholebody{
     padding-right: 100px;
     padding-left: 100px;
     position: relative;
-    bottom: 140px;
+    bottom: 160px;
 } 
 
 #filterbox{
@@ -139,4 +139,307 @@ del{
 }
 
 
+ */
 
+ #wholebody{
+    padding: 0 100px;
+    position: relative;
+    bottom: 120px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#filterbox{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+    padding: 12px 15px;
+    margin-bottom: 50px;
+}
+
+#filtertext{
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#a-z{
+    font-size: 13px;
+    border: 2px solid black;
+    padding: 7px 12px;
+    background: white;
+    color: black;
+    outline: none;
+    cursor: pointer;
+}
+
+#a-z:hover{
+    background-color: black;
+    color: white;
+}
+
+#allproducts{
+    width: 100%;
+}
+
+#noproduct{
+    text-align: center;
+    color: black;
+    font-size: 24px;
+    margin-top: 50px;
+}
+
+.bundle{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 90px;
+}
+
+.setofproducts{
+    border: 2px solid black;
+    border-radius: 22px;
+    padding: 8px;
+
+    background: white;
+    color: black;
+
+    overflow: hidden;
+    position: relative;
+
+    transition: 0.4s ease;
+}
+
+.setofproducts:hover{
+    background-color: black;
+    color: white;
+
+    transform: translateY(-10px) scale(1.02);
+
+    box-shadow:
+    0px 25px 50px rgba(0,0,0,0.95),
+    0px 45px 100px rgba(0,0,0,0.85),
+    0px 70px 140px rgba(0,0,0,0.75),
+    0px 0px 40px rgba(0,0,0,0.9);
+
+    transition: 0.45s ease;
+}
+.trollyicon{
+    font-size: 12px;
+    color: white;
+    position: relative;
+    top: -1px;
+}
+.trolly-button:hover .trollyicon{
+    color: black;
+}
+.imagebox{
+    width: 100%;
+    height: 300px;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productimg{
+    width: 100%;
+    height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+}
+
+.notify{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    width: 100px;
+
+    font-size: 11px;
+    text-align: center;
+
+    padding: 4px 0;
+
+    background-color: black;
+    color: white;
+
+    border: 2px solid white;
+    border-radius: 20px;
+}
+
+.setofproducts:hover .notify{
+    background: white;
+    color: black;
+    border-color: black;
+}
+.imagebox > i{
+    position: absolute;
+    top: 12px;
+    right: 15px;
+
+    font-size: 26px;
+
+    color: black;
+    cursor: pointer;
+
+    text-shadow:
+    0 5px 15px rgba(0,0,0,0.7),
+    0 10px 30px rgba(0,0,0,0.6),
+    0 15px 45px rgba(0,0,0,0.5);
+
+    transition: 0.3s ease;
+}
+
+
+.setofproducts:hover i{
+    color: white;
+}
+
+#allproducts i:hover{
+    transform: scale(1.25);
+
+    text-shadow:
+    0 0 15px rgba(0,0,0,1),
+    0 0 30px rgba(0,0,0,0.95),
+    0 0 50px rgba(0,0,0,0.9),
+    0 0 70px rgba(0,0,0,0.85);
+}
+
+.productcontent{
+    padding: 15px 8px 10px;
+}
+
+.p-name{
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    min-height: 35px;
+
+    display: flex;
+    align-items: center;
+}
+
+.description{
+    font-size: 12px;
+    color: gray;
+
+    min-height: 38px;
+
+    margin-top: 6px;
+}
+
+.setofproducts:hover .description{
+    color: #d1d1d1;
+}
+
+.price{
+    margin-top: 10px;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.buttonrow{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+    margin-top: 15px;
+}
+.trolly-button{
+    flex: 1;
+
+    padding: 8px 6px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    border: 1px solid black;
+
+    background-color: black;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.buynow-button{
+    flex: 1;
+
+    padding: 8px 6px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    border: 1px solid black;
+
+    background-color: black;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.setofproducts:hover .trolly-button,
+.setofproducts:hover .buynow-button{
+    background: white;
+    color: black;
+    border-color: white;
+}
+
+.trolly-button:hover,
+.buynow-button:hover{
+    transform: translateY(-3px);
+}
+
+.setofproducts:hover .trollyicon{
+    color: black;
+}
+
+
+@media(max-width: 992px){
+    #wholebody{
+        padding: 0 40px;
+    }
+
+    .bundle{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media(max-width: 600px){
+    #wholebody{
+        padding: 0 20px;
+        bottom: 80px;
+    }
+
+    .bundle{
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    #filterbox{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
