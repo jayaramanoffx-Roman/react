@@ -6,7 +6,7 @@ import Contact from "./components/Contact";
 import Intro from "./components/Intro";
 import Cart from './components/Cart'
 import Success from './components/Success'
-import Wishlist from "./components/Wishlist";
+import Wishlist from "./components/Temp";
 import './components/Home.css';
 import Register from "./components/Register";
 import Collections from './components/Collections'
