@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Login.css'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 
 const Login = () => {
@@ -48,7 +49,9 @@ const handleLogin = (event) => {
       
       localStorage.setItem('username', username)
 
-      alert('Login Success')
+      window.dispatchEvent(new Event('userUpdated'))
+
+      toast.success('Login Success')
 
       navigate('/')
 
@@ -56,7 +59,7 @@ const handleLogin = (event) => {
 
     else{
 
-      alert('Invalid Username or Password')
+      toast.error('Invalid Username or Password')
 
     }
 

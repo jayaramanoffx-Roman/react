@@ -51,7 +51,7 @@ header{
 
     gap: 85px;
 
-    padding-top: 35px;
+
 }
 
 #logos i{
@@ -69,14 +69,41 @@ header{
     text-shadow: 0 10px 25px rgba(0,0,0,0.45);
 }
 
+.iconbox{
+    position: relative;
+
+    cursor: pointer;
+}
+
+.countbadge{
+    position: absolute;
+
+    top: -10px;
+    right: -12px;
+
+    background: black;
+    color: white;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
 #mainlogo{
     width: 230px;
     height: 230px;
 
     object-fit: contain;
 
-    position: relative;
-    bottom: 18px;
+   
 }
 
 #searchbox{

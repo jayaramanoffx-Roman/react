@@ -1,171 +1,407 @@
 import React, { useEffect, useState } from 'react'
 import './Body.css'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
-const Body = ({ search = "" }) => {
+const Body = ({ search = '', category = 'ALL' }) => {
 
-  const navigate = useNavigate()
+    const navigate = useNavigate()
 
-  const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([])
 
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem('cartItems')
-    return savedCart ? JSON.parse(savedCart) : []
-  })
+    const [collectionType, setCollectionType] =
+        useState('WATCH')
 
-  const [heartchange, setHeartchange] = useState(() => {
-    const savedWishlist = JSON.parse(localStorage.getItem('wishlistItems')) || []
+    const [cart, setCart] = useState(() => {
 
-    const savedHearts = {}
+        const savedCart =
+            localStorage.getItem('cartItems')
 
-    savedWishlist.forEach((item) => {
-      savedHearts[item.id] = true
+        return savedCart
+            ? JSON.parse(savedCart)
+            : []
+
     })
 
-    return savedHearts
-  })
+    const [heartchange, setHeartchange] =
+        useState(() => {
 
-  useEffect(() => {
-    fetch('http://127.0.0.1:8000/products/')
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.log('Product fetch error:', error))
-  }, [])
+            const savedWishlist =
+                JSON.parse(
+                    localStorage.getItem('wishlistItems')
+                ) || []
 
-  const addToCart = (product) => {
-    const updatedCart = [...cart, product]
+            const hearts = {}
 
-    setCart(updatedCart)
+            savedWishlist.forEach((item) => {
+                hearts[item.id] = true
+            })
 
-    localStorage.setItem(
-      'cartItems',
-      JSON.stringify(updatedCart)
-    )
+            return hearts
+        })
 
-    alert(`${product.name} added to cart`)
-  }
+    useEffect(() => {
 
-  const toggleHeart = (product) => {
-    let savedWishlist =
-      JSON.parse(localStorage.getItem('wishlistItems')) || []
+        fetch('http://127.0.0.1:8000/products/')
 
-    const isLiked = heartchange[product.id]
+            .then((response) => response.json())
 
-    if (isLiked) {
-      savedWishlist = savedWishlist.filter(
-        (item) => item.id !== product.id
-      )
-    } else {
-      savedWishlist.push(product)
+            .then((data) => setProducts(data))
+
+            .catch((error) =>
+                console.log(
+                    'Product fetch error:',
+                    error
+                )
+            )
+
+    }, [])
+
+    const addToCart = (product) => {
+
+        const user = localStorage.getItem('username')
+
+        if (!user) {
+        toast.error('Please login to add products to cart')
+        navigate('/LOGIN')
+        return
+        }
+
+        const existingProduct = cart.find(
+            (item) => item.id === product.id
+        )
+
+        let updatedCart
+
+        if (existingProduct) {
+
+            updatedCart = cart.map((item) =>
+
+                item.id === product.id
+
+                    ? {
+                        ...item,
+                        quantity: item.quantity + 1
+                    }
+
+                    : item
+            )
+
+        } else {
+
+            updatedCart = [
+
+                ...cart,
+
+                {
+                    ...product,
+                    quantity: 1
+                }
+
+            ]
+        }
+
+        setCart(updatedCart)
+
+        localStorage.setItem(
+            'cartItems',
+            JSON.stringify(updatedCart)
+        )
+
+        window.dispatchEvent(
+            new Event('cartUpdated')
+        )
+
+        toast.success(`${product.name} added to cart`)
     }
-    console.log(savedWishlist)
-    localStorage.setItem(
-      'wishlistItems',
-      JSON.stringify(savedWishlist)
-    )
 
-    setHeartchange((prev) => ({
-      ...prev,
-      [product.id]: !prev[product.id]
-    }))
-  }
+    const toggleHeart = (product) => {
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase())
-  )
+      const user = localStorage.getItem('username')
 
-  return (
-    <div id="wholebody">
+      if (!user) {
+      toast.error('Please login to add products to wishlist')
+      navigate('/LOGIN')
+      return
+     }
 
-      <div id="filterbox">
-        <span id="filtertext">Filters</span>
+        let savedWishlist =
+            JSON.parse(
+                localStorage.getItem('wishlistItems')
+            ) || []
 
-        <div>
-          <select id="a-z">
-            <option>Alphabets a-z</option>
-            <option>Watches</option>
-            <option>Powerbanks</option>
-            <option>Pendrive</option>
-            <option>Earbuds</option>
-            <option>Boom Headphones</option>
-          </select>
-        </div>
-      </div>
+        if (heartchange[product.id]) {
 
-      <div id="allproducts">
+            savedWishlist =
+                savedWishlist.filter(
+                    (item) => item.id !== product.id
+                )
 
-        {filteredProducts.length === 0 && (
-          <h2 id="noproduct">No products found</h2>
-        )}
+        } else {
 
-        <div className="bundle">
+            savedWishlist.push(product)
+        }
 
-          {filteredProducts.map((product) => (
+        localStorage.setItem(
+            'wishlistItems',
+            JSON.stringify(savedWishlist)
+        )
 
-            <div className="setofproducts" key={product.id}>
+        window.dispatchEvent(
+            new Event('wishlistUpdated')
+        )
 
-              <div className="imagebox">
+        setHeartchange((prev) => ({
 
-                <img
-                  src={`http://127.0.0.1:8000${product.image}`}
-                  alt={product.name}
-                  className="productimg"
-                />
+            ...prev,
 
-                <div className="notify">TOPSELLER</div>
+            [product.id]:
+                !prev[product.id]
 
-                <i
-                  onClick={() => toggleHeart(product)}
-                  className={
-                    heartchange[product.id]
-                      ? 'bi bi-heart-fill'
-                      : 'bi bi-heart'
-                  }
-                ></i>
+        }))
+    }
 
-              </div>
+    let filteredProducts =
+        products.filter((product) =>
 
-              <div className="productcontent">
+            product.name
+                .toLowerCase()
+                .includes(search.toLowerCase())
+        )
 
-                <div className="p-name">{product.name}</div>
+    if (category === 'COLLECTIONS') {
 
-                <div className="description">
-                  {product.description}
+        filteredProducts =
+            filteredProducts.filter((product) =>
+
+                product.name
+                    .toLowerCase()
+                    .includes(
+                        collectionType.toLowerCase()
+                    )
+            )
+    }
+
+    if (category === 'NEW') {
+
+        filteredProducts =
+            [...filteredProducts]
+                .reverse()
+                .slice(0, 6)
+    }
+
+    const [selectedFilter, setSelectedFilter] =
+    useState('ALL')
+
+    if (selectedFilter !== 'ALL') {
+
+    filteredProducts =
+        filteredProducts.filter((product) =>
+
+            product.name
+                .toLowerCase()
+                .includes(
+                    selectedFilter.toLowerCase()
+                )
+        )
+}
+
+    return (
+
+        <div id="wholebody">
+
+            <div id="filterbox">
+
+                <span id="filtertext">
+                    Filters
+                </span>
+
+                <div>
+
+                    <select id="a-z" value={selectedFilter} onChange={(event) =>
+                         setSelectedFilter(event.target.value)   } >
+
+<option value="ALL">
+    All Products
+</option>
+
+<option value="WATCH">
+    Watches
+</option>
+
+<option value="POWERBANK">
+    Powerbanks
+</option>
+
+<option value="PENDRIVE">
+    Pendrive
+</option>
+
+<option value="EARBUD">
+    Earbuds
+</option>
+
+<option value="HEADPHONE">
+    Boom Headphones
+</option>
+
+                    </select>
+
                 </div>
-
-                <div className="price">₹{product.price}</div>
-
-                <div className="buttonrow">
-
-                  <button
-                    className="trolly-button"
-                    onClick={() => addToCart(product)}
-                  >
-                    <i className="bi bi-cart3 trollyicon"></i>
-                    ADD TO CART
-                  </button>
-
-                  <button
-                    className="buynow-button"
-                    onClick={() => navigate('/SUCCESS')}
-                  >
-                    BUY NOW
-                  </button>
-
-                </div>
-
-              </div>
 
             </div>
 
-          ))}
+            {category === 'COLLECTIONS' && (
+
+                <div id="collectionbuttons">
+
+                    <button
+                        onClick={() =>
+                            setCollectionType('WATCH')
+                        }
+                    >
+                        WATCHES
+                    </button>
+
+                    <button
+                        onClick={() =>
+                            setCollectionType('EARBUD')
+                        }
+                    >
+                        EARBUDS
+                    </button>
+
+                    <button
+                        onClick={() =>
+                            setCollectionType('POWERBANK')
+                        }
+                    >
+                        POWERBANKS
+                    </button>
+
+                    <button
+                        onClick={() =>
+                            setCollectionType('PENDRIVE')
+                        }
+                    >
+                        PENDRIVES
+                    </button>
+
+                    <button
+                        onClick={() =>
+                            setCollectionType('HEADPHONE')
+                        }
+                    >
+                        HEADPHONES
+                    </button>
+
+                </div>
+
+            )}
+
+            <div id="allproducts">
+
+                {filteredProducts.length === 0 && (
+
+                    <h2 id="noproduct">
+                        No products found
+                    </h2>
+
+                )}
+
+                <div className="bundle">
+
+                    {filteredProducts.map((product) => (
+
+                        <div
+                            className="setofproducts"
+                            key={product.id}
+                        >
+
+                            <div className="imagebox">
+
+                                <img
+                                    src={`http://127.0.0.1:8000${product.image}`}
+                                    alt={product.name}
+                                    className="productimg"
+                                />
+
+                                <div className="notify">
+                                    TOPSELLER
+                                </div>
+
+                                <i
+                                    onClick={() =>
+                                        toggleHeart(product)
+                                    }
+
+                                    className={
+                                        heartchange[product.id]
+
+                                            ? 'bi bi-heart-fill'
+
+                                            : 'bi bi-heart'
+                                    }
+                                ></i>
+
+                            </div>
+
+                            <div className="productcontent">
+
+                                <div className="p-name">
+                                    {product.name}
+                                </div>
+
+                                <div className="description">
+                                    {product.description}
+                                </div>
+
+                                <div className="price">
+                                    ₹{product.price}
+                                </div>
+
+                                <div className="buttonrow">
+
+                                    <button
+                                        className="trolly-button"
+
+                                        onClick={() =>
+                                            addToCart(product)
+                                        }
+                                    >
+
+                                        <i className="bi bi-cart3 trollyicon"></i>
+
+                                        ADD TO CART
+
+                                    </button>
+
+                                    <button
+                                        className="buynow-button"
+
+                                        onClick={() =>
+                                            navigate('/SUCCESS')
+                                        }
+                                    >
+
+                                        BUY NOW
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    ))}
+
+                </div>
+
+            </div>
 
         </div>
-
-      </div>
-
-    </div>
-  )
+    )
 }
 
 export default Body

@@ -88,3 +88,45 @@
         grid-template-columns: 1fr;
     }
 }
+
+#wishlistbody h2{
+    text-align: center;
+
+    margin-top: 80px;
+
+    font-size: 32px;
+
+    letter-spacing: 2px;
+}
+
+#emptywishlist{
+    text-align: center;
+
+    margin-top: 100px;
+}
+
+#emptywishlist i{
+    font-size: 90px;
+
+    color: black;
+
+    text-shadow:
+    0px 15px 35px rgba(0,0,0,0.45),
+    0px 25px 60px rgba(0,0,0,0.35);
+}
+
+#emptywishlist h2{
+    margin-top: 25px;
+
+    font-size: 38px;
+
+    letter-spacing: 2px;
+}
+
+#emptywishlist p{
+    margin-top: 10px;
+
+    color: gray;
+
+    font-size: 18px;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Register.css'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 
 const Register = () => {
@@ -38,12 +39,12 @@ const handleRegister = (event) => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data)
-      alert('Registered Successfully')
+      toast.success('Registered Successfully')
       navigate('/LOGIN')
     })
     .catch((error) => {
       console.log(error)
-      alert('Registration Failed')
+      toast.error('Registration Failed')
     })
 }
 

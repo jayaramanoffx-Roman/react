@@ -1,79 +1,186 @@
-import React, { useState } from 'react'
-import "./Header.css"
-import shopzlogo from '../assets/logoshopz.png'
+import React, { useEffect, useState } from 'react'
+import './Header.css'
+import shopzlogo from '../assets/shopz rgb.png'
 import { useNavigate } from 'react-router-dom'
 
-const Header = ({ search, setSearch }) => {
+const Header = ({ search, setSearch, setCategory }) => {
 
-  const [Showsearch, setShowsearch] = useState(false)
+    const [Showsearch, setShowsearch] = useState(false)
+    const [wishlistCount, setWishlistCount] = useState(0)
+    const [cartCount, setCartCount] = useState(0)
+    const [username, setUsername] = useState(
+        localStorage.getItem('username')
+    )
 
-  const navigate = useNavigate()
+    const navigate = useNavigate()
 
-  return (
-    <header>
+    useEffect(() => {
+        const updateWishlistCount = () => {
+            const wishlistItems =
+                JSON.parse(localStorage.getItem('wishlistItems')) || []
 
-      <div id="freeshipping">
-        Kick off the New Year with free shipping on orders over Rs. 999!
-      </div>
+            setWishlistCount(wishlistItems.length)
+        }
 
-      <div className="auth-buttons">
-        <button onClick={() => navigate('/LOGIN')} className="login-btn">
-          LOGIN
-        </button>
+        const updateCartCount = () => {
+            const cartItems =
+                JSON.parse(localStorage.getItem('cartItems')) || []
 
-        <button onClick={() => navigate('/REGISTER')} className="register-btn">
-          REGISTER
-        </button>
-      </div>
+            const totalQuantity = cartItems.reduce((total, item) => {
+                return total + item.quantity
+            }, 0)
 
-      <div id="logos">
+            setCartCount(totalQuantity)
+        }
 
-        <i
-          onClick={() => setShowsearch(!Showsearch)}
-          className="bi bi-search"
-        ></i>
+        const updateUser = () => {
+            setUsername(localStorage.getItem('username'))
+        }
 
-        <i
-          onClick={() => navigate('/WISHLIST')}
-          className="bi bi-bag-heart-fill"
-        ></i>
+        updateWishlistCount()
+        updateCartCount()
+        updateUser()
 
-        <img id="mainlogo" src={shopzlogo} alt="ShopZ Logo" />
+        window.addEventListener('wishlistUpdated', updateWishlistCount)
+        window.addEventListener('cartUpdated', updateCartCount)
+        window.addEventListener('userUpdated', updateUser)
 
-        <i
-          onClick={() => navigate('/CART')}
-          className="bi bi-cart-check-fill"
-        ></i>
+        return () => {
+            window.removeEventListener('wishlistUpdated', updateWishlistCount)
+            window.removeEventListener('cartUpdated', updateCartCount)
+            window.removeEventListener('userUpdated', updateUser)
+        }
+    }, [])
 
-        <i
-          onClick={() => navigate('/PROFILE')}
-          className="bi bi-person-circle"
-        ></i>
+    return (
+        <header>
+            <div id="freeshipping">
+                Kick off the New Year with free shipping on orders over Rs. 999!
+            </div>
 
-      </div>
+            {!username && (
+                <div className="auth-buttons">
+                    <button
+                        onClick={() => navigate('/LOGIN')}
+                        className="login-btn"
+                    >
+                        LOGIN
+                    </button>
 
-      {Showsearch && (
-        <div id="searchbox">
-          <input
-            type="text"
-            placeholder="Search here..."
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            id="searchbar"
-          />
-        </div>
-      )}
+                    <button
+                        onClick={() => navigate('/REGISTER')}
+                        className="register-btn"
+                    >
+                        REGISTER
+                    </button>
+                </div>
+            )}
 
-      <div id="menubar">
-        <a href="#" className="menu">SHOP</a>
-        <a href="#" className="menu">COLLECTIONS</a>
-        <a href="#" className="menu">NEW ARRIVALS</a>
-        <a href="#footer" className="menu">ABOUT</a>
-        <a href="#footer" className="menu">CONTACT</a>
-      </div>
+            <div id="logos">
+                <i
+                    onClick={() => setShowsearch(!Showsearch)}
+                    className="bi bi-search"
+                ></i>
 
-    </header>
-  )
+               <div   className="iconbox"   onClick={() => {  
+                  if (!username) {      
+                  navigate('/LOGIN')      
+                  return    }
+                  navigate('/WISHLIST')
+               }}
+                >
+                    <i className="bi bi-bag-heart-fill"></i>
+
+                    <span className="countbadge">
+                        {wishlistCount}
+                    </span>
+                </div>
+
+                <img
+                    id="mainlogo"
+                    src={shopzlogo}
+                    alt="ShopZ Logo"
+                />
+
+                <div
+                    className="iconbox"
+                    onClick={() => {
+                    if (!username) {
+                    navigate('/LOGIN')
+                    return
+                   }
+                    navigate('/CART')
+                   }}
+                  >
+                    <i className="bi bi-cart-check-fill"></i>
+
+                    <span className="countbadge">
+                        {cartCount}
+                    </span>
+                </div>
+
+                <i
+                onClick={() => {
+                if (!username) {
+                navigate('/LOGIN')
+               return
+               }
+               navigate('/PROFILE')
+              }}
+              className="bi bi-person-circle"
+            ></i>
+            </div>
+
+            {Showsearch && (
+                <div id="searchbox">
+                    <input
+                        type="text"
+                        placeholder="Search here..."
+                        value={search}
+                        onChange={(event) => setSearch(event.target.value)}
+                        id="searchbar"
+                    />
+                </div>
+            )}
+
+            <div id="menubar">
+                <a
+                    onClick={() => setCategory('ALL')}
+                    className="menu"
+                >
+                    SHOP ALL
+                </a>
+
+                <a
+                    onClick={() => setCategory('COLLECTIONS')}
+                    className="menu"
+                >
+                    COLLECTIONS
+                </a>
+
+                <a
+                    onClick={() => setCategory('NEW')}
+                    className="menu"
+                >
+                    NEW ARRIVALS
+                </a>
+
+                <a
+                    href="#footer"
+                    className="menu"
+                >
+                    ABOUT
+                </a>
+
+                <a
+                    onClick={() => navigate('/CONTACT')}
+                    className="menu"
+                >
+                    CONTACT
+                </a>
+            </div>
+        </header>
+    )
 }
 
 export default Header

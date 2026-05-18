@@ -178,6 +178,10 @@
         grid-template-columns: 1fr;
     }
 
+    .profile-boxes div{
+    cursor: pointer;
+  }
+
     #logoutbtn{
         align-self: stretch;
     }

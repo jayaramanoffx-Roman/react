@@ -29,7 +29,15 @@ const Wishlist = () => {
 
       {wishlistItems.length === 0 ? (
 
-        <h2>No wishlist items</h2>
+        <div id="emptywishlist">
+
+  <i className="bi bi-heartbreak-fill"></i>
+
+  <h2>No wishlist items</h2>
+
+  <p>Your favourite products will appear here</p>
+
+</div>
 
       ) : (
 

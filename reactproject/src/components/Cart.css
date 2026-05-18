@@ -90,6 +90,11 @@
     font-weight: bold;
 
     transition: 0.3s ease;
+
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #backhome:hover{
@@ -112,6 +117,37 @@
     text-align: center;
     color: black;
     margin-top: 50px;
+}
+#emptycart{
+    text-align: center;
+
+    margin-top: 100px;
+}
+
+#emptycart i{
+    font-size: 90px;
+
+    color: black;
+
+    text-shadow:
+    0px 15px 35px rgba(0,0,0,0.45),
+    0px 25px 60px rgba(0,0,0,0.35);
+}
+
+#emptycart h2{
+    margin-top: 25px;
+
+    font-size: 38px;
+
+    letter-spacing: 2px;
+}
+
+#emptycart p{
+    margin-top: 10px;
+
+    color: gray;
+
+    font-size: 18px;
 }
 
 .cartdetails{
@@ -177,4 +213,45 @@
     transform: translateY(-4px);
 
     background: #1a1a1a;
+}
+
+.quantitybox{
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+.quantitybox button{
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+    color: black;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.quantitybox button:hover{
+    background: black;
+    color: white;
+
+    border: 2px solid white;
+
+    transform: scale(1.08);
+}
+
+.quantitybox span{
+    font-size: 18px;
+    font-weight: bold;
 }

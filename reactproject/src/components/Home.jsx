@@ -1,31 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import React, { useState } from 'react'
 import Header from './Header'
 import Body from './Body'
 import Footer from './Footer'
-
 import './Home.css'
 
 const Home = () => {
 
-  const navigate = useNavigate()
-  const [search, setSearch] = useState('')
+    const [search, setSearch] = useState('')
+    const [category, setCategory] = useState('ALL')
 
-  useEffect(() => {
-    const user = localStorage.getItem('username')
-    if(!user){
-      navigate('/LOGIN')
-    }
-  }, [])
+    return (
+        <div>
 
-  return (
-    <div>
-      <Header search={search} setSearch={setSearch} />
-      <Body  search={search}/>
-      <Footer />
-    </div>
-  )
+            <Header
+                search={search}
+                setSearch={setSearch}
+                setCategory={setCategory}
+            />
+
+            <Body
+                search={search}
+                category={category}
+            />
+
+            <Footer />
+
+        </div>
+    )
 }
 
 export default Home

@@ -18,8 +18,51 @@ const Cart = () => {
   }
 
   const totalPrice = cartItems.reduce((total, item) => {
-    return total + Number(item.price)
+    return total + (item.price * item.quantity)
   }, 0)
+
+  const increaseQuantity = (id) => {
+
+  const updatedCart = cartItems.map((item) =>
+
+    item.id === id
+      ? { ...item, quantity: item.quantity + 1 }
+      : item
+
+  )
+
+  setCartItems(updatedCart)
+
+  localStorage.setItem(
+    'cartItems',
+    JSON.stringify(updatedCart)
+  )
+}
+
+const decreaseQuantity = (id) => {
+
+  let updatedCart = cartItems.map((item) =>
+
+    item.id === id
+      ? {
+          ...item,
+          quantity: item.quantity - 1
+        }
+      : item
+
+  )
+
+  updatedCart = updatedCart.filter(
+    (item) => item.quantity > 0
+  )
+
+  setCartItems(updatedCart)
+
+  localStorage.setItem(
+    'cartItems',
+    JSON.stringify(updatedCart)
+  )
+}
 
   return (
     <div id="cartbody">
@@ -27,7 +70,15 @@ const Cart = () => {
       <h1>MY CART</h1>
 
       {cartItems.length === 0 ? (
-        <h2 id="emptycart">Your cart is empty</h2>
+        <div id="emptycart">
+
+  <i className="bi bi-cart-x-fill"></i>
+
+  <h2>Your cart is empty</h2>
+
+  <p>Add products to continue shopping</p>
+
+</div>
       ) : (
         <>
           <div id="cartcontainer">
@@ -40,10 +91,34 @@ const Cart = () => {
                 />
 
                 <div className="cartdetails">
-                  <h3>{item.name}</h3>
-                  <p>{item.description}</p>
-                  <h4>₹{item.price}</h4>
-                </div>
+
+  <h3>{item.name}</h3>
+
+  <p>{item.description}</p>
+
+  <h4>
+    ₹{item.price * item.quantity}
+  </h4>
+
+  <div className="quantitybox">
+
+    <button
+      onClick={() => decreaseQuantity(item.id)}
+    >
+      -
+    </button>
+
+    <span>{item.quantity}</span>
+
+    <button
+      onClick={() => increaseQuantity(item.id)}
+    >
+      +
+    </button>
+
+  </div>
+
+</div>
 
                 <button className="removebtn" onClick={() => removeItem(index)}>   REMOVE    </button>
 
