@@ -46,14 +46,54 @@ useEffect(() => {
         .catch((error) => console.log('Product fetch error:', error))
 }, [])
 
-const addToCart = (product) => {
-    const user = localStorage.getItem('username')
+// const addToCart = (product) => {
+//     const user = localStorage.getItem('username')
 
-    if (!user) {
-        toast.error('Please login to add products')
-        navigate('/LOGIN')
-        return
-    }
+//     if (!user) {
+//         toast.error('Please login to add products')
+//         navigate('/LOGIN')
+//         return
+//     }
+
+//     const savedCart =
+//         JSON.parse(localStorage.getItem('cartItems')) || []
+
+//     const existingProduct =
+//         savedCart.find((item) => item.id === product.id)
+
+//     let updatedCart
+
+//     if (existingProduct) {
+//         updatedCart = savedCart.map((item) =>
+//             item.id === product.id
+//                 ? {
+//                     ...item,
+//                     quantity: item.quantity + 1
+//                 }
+//                 : item
+//         )
+//     } else {
+//         updatedCart = [
+//             ...savedCart,
+//             {
+//                 ...product,
+//                 quantity: 1
+//             }
+//         ]
+//     }
+
+//     setCart(updatedCart)
+
+//     localStorage.setItem(
+//         'cartItems',
+//         JSON.stringify(updatedCart)
+//     )
+
+//     window.dispatchEvent(new Event('cartUpdated'))
+
+//     toast.success('Product added to cart')
+// }
+const addToCart = (product) => {
 
     const savedCart =
         JSON.parse(localStorage.getItem('cartItems')) || []
@@ -61,26 +101,18 @@ const addToCart = (product) => {
     const existingProduct =
         savedCart.find((item) => item.id === product.id)
 
-    let updatedCart
-
     if (existingProduct) {
-        updatedCart = savedCart.map((item) =>
-            item.id === product.id
-                ? {
-                    ...item,
-                    quantity: item.quantity + 1
-                }
-                : item
-        )
-    } else {
-        updatedCart = [
-            ...savedCart,
-            {
-                ...product,
-                quantity: 1
-            }
-        ]
+        toast.info('Product already in cart')
+        return
     }
+
+    const updatedCart = [
+        ...savedCart,
+        {
+            ...product,
+            quantity: 1
+        }
+    ]
 
     setCart(updatedCart)
 
