@@ -27,7 +27,7 @@ const handleLogin = (event) => {
     password: password
   }
 
-  fetch('http://127.0.0.1:8000/login/', {
+  fetch('https://shopz-backend-75aw.onrender.com/login/', {
 
     method: 'POST',
 
