@@ -42,7 +42,7 @@ const Body = ({ search = '', category = 'ALL' }) => {
 
     useEffect(() => {
 
-        fetch('http://127.0.0.1:8000/products/')
+        fetch('https://shopz-backend-75aw.onrender.com/products/')
 
             .then((response) => response.json())
 
@@ -321,7 +321,7 @@ const Body = ({ search = '', category = 'ALL' }) => {
                             <div className="imagebox">
 
                                 <img
-                                    src={`http://127.0.0.1:8000${product.image}`}
+                                    src={`https://shopz-backend-75aw.onrender.com${product.image}`}
                                     alt={product.name}
                                     className="productimg"
                                 />
