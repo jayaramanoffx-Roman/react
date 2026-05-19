@@ -1,4 +1,4 @@
-*{
+/* *{
     box-sizing: border-box;
 }
 
@@ -181,6 +181,48 @@
     .profile-boxes div{
     cursor: pointer;
   }
+
+    #logoutbtn{
+        align-self: stretch;
+    }
+} */
+
+
+@media(max-width: 768px){
+
+    #profilecard{
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .profile-left{
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .profile-right{
+        padding: 25px;
+    }
+
+    .profile-right h1{
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .profile-info p{
+        font-size: 12px;
+    }
+
+    .profile-boxes{
+        grid-template-columns: repeat(2,1fr);
+        gap: 12px;
+    }
+
+    .profile-boxes div{
+        min-height: 100px;
+        cursor: pointer;
+        padding: 12px;
+    }
 
     #logoutbtn{
         align-self: stretch;

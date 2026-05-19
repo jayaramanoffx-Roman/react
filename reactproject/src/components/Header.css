@@ -1,4 +1,4 @@
-header{
+/* header{
     position: relative;
     background: white;
     min-height: 300px;
@@ -196,5 +196,219 @@ header{
 
     #searchbar{
         width: 90%;
+    }
+} */
+ 
+
+header{
+    position: relative;
+    background: white;
+    min-height: 300px;
+}
+
+#freeshipping{
+    color: white;
+    background: black;
+    text-align: center;
+    padding: 10px;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.auth-buttons{
+    position: absolute;
+    right: 50px;
+    top: 18px;
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.login-btn,
+.register-btn{
+    padding: 9px 20px;
+    border: 2px solid black;
+    background: white;
+    color: black;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.login-btn:hover,
+.register-btn:hover{
+    background: black;
+    color: white;
+    transform: translateY(-3px);
+}
+
+#logos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 85px;
+}
+
+#logos i{
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+    transition: 0.3s ease;
+}
+
+.iconbox{
+    position: relative;
+    cursor: pointer;
+}
+
+.countbadge{
+    position: absolute;
+    top: -10px;
+    right: -12px;
+    background: black;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+#mainlogo{
+    width: 230px;
+    height: 230px;
+    object-fit: contain;
+}
+
+#searchbox{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+#searchbar{
+    width: 70%;
+    height: 42px;
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 0 22px;
+    outline: none;
+    font-size: 14px;
+}
+
+#menubar{
+    display: flex;
+    justify-content: center;
+    gap: 95px;
+    margin-top: -10px;
+    padding-bottom: 25px;
+}
+
+.menu{
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-family: Impact, sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.menu::after{
+    content: "";
+    width: 0;
+    height: 3px;
+    background: black;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.3s ease;
+}
+
+.menu:hover::after{
+    width: 100%;
+}
+
+/* Tablet */
+@media(min-width: 769px) and (max-width: 1024px){
+    header{
+        min-height: 270px;
+    }
+
+    .auth-buttons{
+        right: 25px;
+        top: 15px;
+    }
+
+    #logos{
+        gap: 55px;
+    }
+
+    #mainlogo{
+        width: 200px;
+        height: 200px;
+    }
+
+    #menubar{
+        gap: 45px;
+    }
+
+    .menu{
+        font-size: 20px;
+    }
+
+    #searchbar{
+        width: 80%;
+    }
+}
+
+/* Mobile */
+@media(max-width: 768px){
+    header{
+        min-height: auto;
+        padding-bottom: 25px;
+    }
+
+    .auth-buttons{
+        position: static;
+        justify-content: center;
+        padding-top: 15px;
+    }
+
+    #logos{
+        gap: 25px;
+        padding-top: 25px;
+        flex-wrap: wrap;
+    }
+
+    #logos i{
+        font-size: 18px;
+    }
+
+    #mainlogo{
+        width: 150px;
+        height: 150px;
+        order: -1;
+        flex-basis: 100%;
+    }
+
+    #searchbar{
+        width: 90%;
+    }
+
+    #menubar{
+        flex-wrap: wrap;
+        gap: 22px;
+        margin-top: 10px;
+    }
+
+    .menu{
+        font-size: 18px;
     }
 }
