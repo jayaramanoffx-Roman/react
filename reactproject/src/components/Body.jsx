@@ -57,63 +57,53 @@ const Body = ({ search = '', category = 'ALL' }) => {
 
     }, [])
 
-    const addToCart = (product) => {
+const addToCart = (product) => {
+    const user = localStorage.getItem('username')
 
-        const user = localStorage.getItem('username')
-
-        if (!user) {
-        toast.error('Please login to add products to cart')
+    if (!user) {
+        toast.error('Please login to add products')
         navigate('/LOGIN')
         return
-        }
-
-        const existingProduct = cart.find(
-            (item) => item.id === product.id
-        )
-
-        let updatedCart
-
-        if (existingProduct) {
-
-            updatedCart = cart.map((item) =>
-
-                item.id === product.id
-
-                    ? {
-                        ...item,
-                        quantity: item.quantity + 1
-                    }
-
-                    : item
-            )
-
-        } else {
-
-            updatedCart = [
-
-                ...cart,
-
-                {
-                    ...product,
-                    quantity: 1
-                }
-
-            ]
-        }
-
-        setCart(updatedCart)
-
-        localStorage.setItem(
-            'cartItems',
-            JSON.stringify(updatedCart)
-        )
-
-        window.dispatchEvent(
-            new Event('cartUpdated')
-        )
-
-        toast.success(`${product.name} added to cart`)
     }
+
+    const savedCart =
+        JSON.parse(localStorage.getItem('cartItems')) || []
+
+    const existingProduct =
+        savedCart.find((item) => item.id === product.id)
+
+    let updatedCart
+
+    if (existingProduct) {
+        updatedCart = savedCart.map((item) =>
+            item.id === product.id
+                ? {
+                    ...item,
+                    quantity: item.quantity + 1
+                }
+                : item
+        )
+    } else {
+        updatedCart = [
+            ...savedCart,
+            {
+                ...product,
+                quantity: 1
+            }
+        ]
+    }
+
+    setCart(updatedCart)
+
+    localStorage.setItem(
+        'cartItems',
+        JSON.stringify(updatedCart)
+    )
+
+    window.dispatchEvent(new Event('cartUpdated'))
+
+    toast.success('Product added to cart')
+}
 
     const toggleHeart = (product) => {
 
