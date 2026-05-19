@@ -86,7 +86,7 @@ const decreaseQuantity = (id) => {
               <div className="cartcard" key={index}>
 
                 <img
-                  src={`http://127.0.0.1:8000${item.image}`}
+                  src={`https://shopz-backend-75aw.onrender.com${item.image}`}
                   alt={item.name}
                 />
 

@@ -25,3 +25,23 @@
 
     animation: fadeUp 2.5s ease;
 }
+
+@media(max-width:768px){
+
+    #introbody{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+
+    #introgif,
+    #introvideo{
+        width: 85%;
+        height: auto;
+        max-height: 75vh;
+        object-fit: contain;
+        object-position: center;
+    }
+}
