@@ -247,3 +247,35 @@ header{
         margin-top: 5px;
     }
 }
+
+@media(max-width: 1024px){
+    #menubar{
+        gap: 35px;
+    }
+
+    .menu{
+        color: black !important;
+        font-size: 18px;
+        font-weight: 900;
+    }
+}
+
+@media(max-width: 768px){
+    #menubar{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 6px;
+        padding: 0 8px 14px;
+    }
+
+    .menu{
+        color: black !important;
+        font-size: 10px !important;
+        font-weight: 900;
+        letter-spacing: 0.4px;
+        white-space: nowrap;
+        text-shadow: none;
+    }
+}

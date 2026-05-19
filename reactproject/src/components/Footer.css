@@ -40,7 +40,8 @@ p{
 #footer a{
     text-decoration: none;
     color: grey;
-    font-size: small; 
+    font-size: small;
+    
 }
 #footer :hover{
     color: white;
@@ -93,6 +94,9 @@ p{
     padding-bottom: 2px;
     margin: 0;
 }
+    .footer-break{
+        display: none;
+    }
 }
 
-
+ 

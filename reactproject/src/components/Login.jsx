@@ -8,6 +8,8 @@ const Login = () => {
 
   const navigate = useNavigate()
 
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
   const user = localStorage.getItem('username')
   if(user){
@@ -21,6 +23,8 @@ const Login = () => {
 const handleLogin = (event) => {
 
   event.preventDefault()
+
+  setLoading(true)
 
   const loginData = {
     username: username,
@@ -42,6 +46,8 @@ const handleLogin = (event) => {
   .then((response) => response.json())
 
   .then((data) => {
+
+    setLoading(false)
 
     console.log(data)
 
@@ -89,8 +95,8 @@ const handleLogin = (event) => {
           onChange={(event) => setPassword(event.target.value)}
         />
 
-        <button id="loginsubmitbutton" type="submit">
-          LOGIN
+        <button id="loginsubmitbutton" type="submit" disabled={loading}>
+    {loading ? 'LOGGING IN...' : 'LOGIN'}
         </button>
 
         <p id="registerlink">

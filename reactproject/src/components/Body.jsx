@@ -9,6 +9,8 @@ const Body = ({ search = '', category = 'ALL' }) => {
 
     const [products, setProducts] = useState([])
 
+    const [loading, setLoading] = useState(true)
+
     const [collectionType, setCollectionType] = useState('WATCH')
 
     const [cart, setCart] = useState(() => {
@@ -42,57 +44,17 @@ const Body = ({ search = '', category = 'ALL' }) => {
 useEffect(() => {
     fetch('https://shopz-backend-75aw.onrender.com/products/')
         .then((response) => response.json())
-        .then((data) => setProducts(data))
-        .catch((error) => console.log('Product fetch error:', error))
+        .then((data) => {
+            setProducts(data)
+            setLoading(false)
+        })
+        .catch((error) => {
+            console.log('Product fetch error:', error)
+            setLoading(false)
+        })
 }, [])
 
-// const addToCart = (product) => {
-//     const user = localStorage.getItem('username')
 
-//     if (!user) {
-//         toast.error('Please login to add products')
-//         navigate('/LOGIN')
-//         return
-//     }
-
-//     const savedCart =
-//         JSON.parse(localStorage.getItem('cartItems')) || []
-
-//     const existingProduct =
-//         savedCart.find((item) => item.id === product.id)
-
-//     let updatedCart
-
-//     if (existingProduct) {
-//         updatedCart = savedCart.map((item) =>
-//             item.id === product.id
-//                 ? {
-//                     ...item,
-//                     quantity: item.quantity + 1
-//                 }
-//                 : item
-//         )
-//     } else {
-//         updatedCart = [
-//             ...savedCart,
-//             {
-//                 ...product,
-//                 quantity: 1
-//             }
-//         ]
-//     }
-
-//     setCart(updatedCart)
-
-//     localStorage.setItem(
-//         'cartItems',
-//         JSON.stringify(updatedCart)
-//     )
-
-//     window.dispatchEvent(new Event('cartUpdated'))
-
-//     toast.success('Product added to cart')
-// }
 const addToCart = (product) => {
 
     const savedCart =
@@ -312,13 +274,13 @@ const addToCart = (product) => {
 
             <div id="allproducts">
 
-                {filteredProducts.length === 0 && (
+                {loading && (
+    <h2 id="noproduct">Loading products...</h2>
+)}
 
-                    <h2 id="noproduct">
-                        No products found
-                    </h2>
-
-                )}
+{!loading && filteredProducts.length === 0 && (
+    <h2 id="noproduct">No products found</h2>
+)}
 
                 <div className="bundle">
 
