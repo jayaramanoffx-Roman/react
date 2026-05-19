@@ -9,8 +9,7 @@ const Body = ({ search = '', category = 'ALL' }) => {
 
     const [products, setProducts] = useState([])
 
-    const [collectionType, setCollectionType] =
-        useState('WATCH')
+    const [collectionType, setCollectionType] = useState('WATCH')
 
     const [cart, setCart] = useState(() => {
 
@@ -40,22 +39,12 @@ const Body = ({ search = '', category = 'ALL' }) => {
             return hearts
         })
 
-    useEffect(() => {
-
-        fetch('https://shopz-backend-75aw.onrender.com/products/')
-
-            .then((response) => response.json())
-
-            .then((data) => setProducts(data))
-
-            .catch((error) =>
-                console.log(
-                    'Product fetch error:',
-                    error
-                )
-            )
-
-    }, [])
+useEffect(() => {
+    fetch('https://shopz-backend-75aw.onrender.com/products/')
+        .then((response) => response.json())
+        .then((data) => setProducts(data))
+        .catch((error) => console.log('Product fetch error:', error))
+}, [])
 
 const addToCart = (product) => {
     const user = localStorage.getItem('username')
@@ -311,10 +300,9 @@ const addToCart = (product) => {
                             <div className="imagebox">
 
                                 <img
-                                    src={`https://shopz-backend-75aw.onrender.com${product.image}`}
-                                    alt={product.name}
-                                    className="productimg"
-                                />
+    src={`https://shopz-backend-75aw.onrender.com${product.image}`}
+    alt={product.name}
+    className="productimg" />
 
                                 <div className="notify">
                                     TOPSELLER
