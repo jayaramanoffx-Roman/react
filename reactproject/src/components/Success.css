@@ -43,3 +43,34 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+
+
+
+@media(max-width:768px){
+
+    #successcard{
+        width: 90%;
+        min-height: 260px;
+        padding: 25px 18px;
+        border-radius: 20px;
+    }
+
+    #successcard h1{
+        font-size: 26px;
+    }
+
+    #successcard p{
+        font-size: 13px;
+    }
+
+    #successcard i{
+        font-size: 55px;
+    }
+
+    #successcard button{
+        width: 100%;
+        padding: 10px;
+        font-size: 13px;
+    }
+}

@@ -1,4 +1,4 @@
-/* *{
+*{
     box-sizing: border-box;
 }
 
@@ -185,7 +185,7 @@
     #logoutbtn{
         align-self: stretch;
     }
-} */
+}
 
 
 @media(max-width: 768px){
@@ -226,5 +226,52 @@
 
     #logoutbtn{
         align-self: stretch;
+    }
+}
+
+@media(max-width: 768px){
+
+    #profilebody{
+        padding: 15px;
+        align-items: flex-start;
+    }
+
+    #profilecard{
+        width: 100%;
+        grid-template-columns: 1fr;
+        border-radius: 22px;
+    }
+
+    .profile-left{
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .profile-right{
+        padding: 25px;
+    }
+
+    .profile-right h1{
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .profile-info p{
+        font-size: 12px;
+    }
+
+    .profile-boxes{
+        grid-template-columns: repeat(2,1fr);
+        gap: 12px;
+    }
+
+    .profile-boxes div{
+        min-height: 100px;
+        padding: 12px;
+        cursor: pointer;
+    }
+
+    #logoutbtn{
+        width: 100%;
     }
 }
